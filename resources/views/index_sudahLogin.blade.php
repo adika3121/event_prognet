@@ -56,7 +56,19 @@
               </form>
 			<!-- Isi Dari Navigation Bar kanan -->
               <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/register">Register</a></li>
+                    <li class="dropdown">
+											<a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img class="img-circle img-responsive img_akun"src="assets/img/dulau.jpg" alt=""> </img>
+                        <p class="float-right">
+                            Account
+                        </p>
+												<span class="caret clear"></span>
+											</a>
+											<ul class="dropdown-menu">
+												<li> <a href="#">Lihat Dashboard</a> </li>
+												<li> <a href="#">Keluar</a> </li>
+											</ul>
+										</li>
 
                      <li><a href="/login" class="btn btn-round btn-default">Sign in</a></li>
                </ul>
@@ -116,7 +128,7 @@
 									<div class="card-block">
 										<h3 class="card-title">Seminar Nasional TI</h3>
 										<p class="card-text">Membahas seputar topik IOT</p>
-										<a href="detail_event" class="btn btn-success">Lihat Detail</a>
+										<a href="#" class="btn btn-success">Lihat Detail</a>
 									</div>
 								</div>
 							</div>

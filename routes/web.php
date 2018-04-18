@@ -16,6 +16,9 @@ Route::get('/kelola_akun', 'HomeController@kelola_akun');
 Route::get('/', function () {
     return view('index');
 });
+Route::get('/coba', function () {
+    return view('index_sudahLogin');
+});
 ///////////////////////////////////////////////////////////////////
 //Event
 Route::resource('/events', 'EventController');
