@@ -19,6 +19,9 @@ Route::get('/', function () {
 Route::get('/coba', function () {
     return view('index_sudahLogin');
 });
+Route::get('/coba2', function () {
+    return view('kategori_kelasInteraktif');
+});
 ///////////////////////////////////////////////////////////////////
 //Event
 Route::resource('/events', 'EventController');
