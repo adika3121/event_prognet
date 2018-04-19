@@ -69,8 +69,10 @@
 												<li> <a href="#">Keluar</a> </li>
 											</ul>
 										</li>
-
-                     <li><a href="/login" class="btn btn-round btn-default">Sign in</a></li>
+                    <li><a href="/login" class="btn btn-round btn-default">
+											<i class="fa fa-plus"></i>
+											<span class="mleft-10"> Buat Event</span> </a>
+										</li>
                </ul>
 
             </div><!-- /.navbar-collapse -->
