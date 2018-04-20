@@ -44,14 +44,16 @@
                 <ul class="nav navbar-nav">
                   <li class="active"><a href="#kategori_event" class="scroll white">Kategori Event</a></li>
                   <li>
-                      <a href="javascript:void(0);" data-toggle="search" class="hidden-xs"><i class="fa fa-search white"></i></a>
-                  </li>
-                </ul>
-                 <form class="navbar-form navbar-left navbar-search-form" role="search">
-                   <div class="form-group">
-                        <input type="text" value="" class="form-control" placeholder="Search...">
-                   </div>
-                </form>
+                    <a href="javascript:void(0);" data-toggle="search" class="hidden-xs"><i class="fa fa-search white"></i></a>
+                </li>
+              </ul>
+               <form class="navbar-form navbar-left navbar-search-form" role="search">
+                 <div class="form-group">
+                      <input type="text" value="" class="form-control" placeholder="Search...">
+                 </div>
+              </form>
+
+
   							<!-- Isi Dari Navigation Bar kanan -->
                 <ul class="nav navbar-nav navbar-right">
                       <li><a href="#" class="white">Register</a></li>
@@ -199,6 +201,7 @@ Nullam congue sapien et ultricies elementum. Suspendisse id velit at elit portti
   $('.carousel').carousel({
       interval: 4000
     });
+
 
 
 </script>

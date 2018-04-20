@@ -1,5 +1,26 @@
+/**hal kecil**/
 
+.ukuran-besar{
+  font-size: 80px;
+}
 
+.ikon-murung{
+  list-style-type: none;
+  position: absolute;
+  left:548px;
+}
+
+.mt-110{
+  margin-top: 110px;
+}
+
+.mb-30{
+  margin-bottom: 30px;
+}
+
+.mt-90{
+  margin-top: 90px;
+}
 .tengah{
   text-align: center;
 }

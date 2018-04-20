@@ -6,7 +6,7 @@
   	<link rel="icon" type="image/png" href="assets/img/favicon.png">
 
   	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  	<title>Event Bagus | Kelas Interaktif</title>
+  	<title>Search "keyword"</title>
 
   	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -72,7 +72,7 @@
         <!-- Header dari Event -->
         <div class="row">
           <div class="col-md-12">
-           <h4 class="tengah">Kategori : nama_kategori</h4>
+           <h4 class="tengah">Hasil Pencarian untuk "Keyword"</h4>
            <hr/>
            <div class="row">
              <div class="col-md-12">
@@ -127,7 +127,7 @@
                     </div>
                       <h3>Learning to Code</h1>
                       <h5>Opening a door to the future</h2>
-                      <p class="summary"> quam nobis! Neque ad aliquam facilis numquam. Veritatis, sit.</p>
+                      <p class="#"> quam nobis! Neque ad aliquam facilis numquam. Veritatis, sit.</p>
                       <br>
                       <a href="#">Read More</a>
                   </div>

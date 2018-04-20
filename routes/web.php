@@ -22,6 +22,12 @@ Route::get('/coba', function () {
 Route::get('/coba2', function () {
     return view('kategori_kelasInteraktif');
 });
+Route::get('/coba3', function () {
+    return view('hasil_search');
+});
+Route::get('/coba4', function () {
+    return view('hasil_searchNotFound');
+});
 ///////////////////////////////////////////////////////////////////
 //Event
 Route::resource('/events', 'EventController');
