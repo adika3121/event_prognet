@@ -1,0 +1,15 @@
+Notif
+id
+type
+user_id
+event_id
+status
+
+notfikasi
+
+1. Ada yang pesan tiket (user_id, event_id)
+2. Terjadi update event (user_id, event_id)
+3. Batal memesan tiket
+4. Konfirmasi tiket
+5. Event dibatalkan
+6. Tiket dibatalkan
