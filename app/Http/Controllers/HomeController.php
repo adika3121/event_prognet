@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
+use App\Event;
+use App\Ticket;
+use App\Notif;
 
 class HomeController extends Controller
 {
@@ -11,28 +15,24 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct(){
        $this->middleware('auth');
     }
 
-    public function index()
-    {
-        return view('home');
+    public function index(){
+
+        return view('dashboard.index')
+                ->with('events',
+                    Event::where('user_id', Auth::user()->id)->count()
+                )->with('passed_events',
+                    Event::where('user_id', Auth::user()->id)->count()
+                )->with('tickets',
+                    Ticket::where('user_id', Auth::user()->id)->count()
+                );
     }
 
-    public function kelola_event()
-    {
-        return view('kelola_event');
+    public function profile(){
+        return view('auth.profile');
     }
-
-    public function kelola_tiket()
-    {
-        return view('kelola_tiket');
-    }
-
-    public function kelola_akun()
-    {
-        return view('kelola_akun');
-    }
+    
 }

@@ -1,5 +1,7 @@
 <?php
 
+Route::get('/test', 'TestController@index');
+
 ///////////////////////////////////////////////////////////////////
 //Auth user
 Auth::routes();
@@ -7,21 +9,28 @@ Auth::routes();
 ///////////////////////////////////////////////////////////////////
 //Home
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/kelola_event', 'HomeController@kelola_event');
-Route::get('/kelola_tiket', 'HomeController@kelola_tiket');
-Route::get('/kelola_akun', 'HomeController@kelola_akun');
+Route::get('/profile', 'HomeController@profile');
 
 ///////////////////////////////////////////////////////////////////
 //Direktori root
-Route::get('/', function () {
-    return view('index');
-});
-Route::get('/coba', function () {
-    return view('index_sudahLogin');
-});
+Route::get('/', 'PageController@index');
+Route::get('/not_found', 'PageController@not_found');
+
 ///////////////////////////////////////////////////////////////////
 //Event
 Route::resource('/events', 'EventController');
+Route::get('/events/{id}/ticket', 'EventController@ticket');
+
 ///////////////////////////////////////////////////////////////////
 //Ticket
 Route::resource('/tickets', 'TicketController');
+Route::post('/tickets/{id}/confirm', 'TicketController@toggle_confirm');
+Route::post('/tickets/confirm', 'TicketController@code_confirm');
+
+///////////////////////////////////////////////////////////////////
+//Notif
+Route::resource('/notif', 'NotifController');
+
+///////////////////////////////////////////////////////////////////
+//User
+Route::resource('/users', 'UserController');
