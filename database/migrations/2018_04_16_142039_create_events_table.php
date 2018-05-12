@@ -18,7 +18,6 @@ class CreateEventsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->datetime('start_date');
-            $table->datetime('end_date');
             $table->string('location');
             $table->text('description');
             $table->string('image');

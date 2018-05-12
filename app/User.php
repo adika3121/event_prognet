@@ -9,12 +9,6 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-
     protected $fillable = [
         'id', 'name', 'email', 'password', 'img_profile', 'gender', 'birthday', 'address'
     ];
@@ -22,6 +16,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    protected $dates = ['birthday'];
 
     public function tickets(){
         return $this->hasMany(Ticket::class, 'user_id');

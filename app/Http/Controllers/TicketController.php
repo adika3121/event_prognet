@@ -4,13 +4,29 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Ticket;
+use App\Event;
+use App\Notif;
+use Auth;
 
 class TicketController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware('auth', [
+            'except' => ['index', 'show']
+        ]);
+    }
+
     ///////////////////////////////////////////////////////////////////
     //Func resource
     public function index(){
-    	return Ticket::with(['user', 'event_id'])->get();
+    	return view('dashboard.ticket.index')
+                ->with('tickets',
+                    Ticket::with('event')->where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->get()
+                )->with('notifs', 
+                    Notif::where('user_id', Auth::user()->id)->where('status', 0)
+                        ->orderBy('created_at', 'desc')->get()
+                );
     }
 
     public function show($id){
@@ -18,12 +34,44 @@ class TicketController extends Controller
     }
 
     public function store(Request $req){
-        $req['confirmed'] = 0;
         $this->validate($req, [
-            'user_id' => 'required|integer',
             'event_id' => 'required|integer'
         ]);
-    	Ticket::create($req->all());
+        $code = "";
+        $total = Ticket::where('event_id', $req->event_id)
+                                ->where('confirmed', 1)
+                                ->get();
+        $event = Event::find($req->event_id);
+        //membuat kode pada tiket
+        while(true){
+            $valid = true;
+            //membuat kode
+            //format : id_event - id_user - angka acak
+            $code = $event->id.'-'.Auth::user()->id.'-'.strtoupper(substr(md5(mt_rand(1, 200)), 0, 5));
+            foreach($total as $i){
+                if(strcmp($code, $i->code) == 0){
+                    $valid = false;
+                    break;
+                }
+            }
+            if($valid){
+                break;
+            }
+        }
+    	$ticket = Ticket::create([
+            'event_id' => $req->event_id,
+            'user_id' => Auth::user()->id,
+            'code' => $code,
+            'confirmed' => 0
+        ]);
+
+        Notif::create([
+            'user_id' => $event->user_id,
+            'type' => 1,
+            'content' => '<b>'.Auth::user()->name.'</b> memesan tiket event <b>'.$event->name.'</b>'
+        ]);
+
+        return redirect()->back()->with('success', 'Anda berhasil memesan tiket');
     }
 
     public function update($id, Request $req){
@@ -35,46 +83,39 @@ class TicketController extends Controller
     }
 
     public function destroy($id){
-    	Ticket::find($id)->delete();
+        $ticket = Ticket::with('event')->find($id);
+        if($ticket->user_id == Auth::user()->id){
+            Notif::create([
+                'user_id' => $ticket->event->user_id,
+                'type' => 3,
+                'content' => '<b>'.Auth::user()->name.'</b> batal memesan tiket event <b>'.$ticket->event->name.'</b>'
+            ]);
+        } else {
+            Notif::create([
+                'user_id' => $ticket->user_id,
+                'type' => 2,
+                'content' => 'Tiket event <b>'.$ticket->event->name.'</b> yang anda pesan dibatalkan'
+            ]);
+        }
+        
+        $ticket->delete();
+        return redirect()->back()->with('success', 'Pesanan tiket berhasil dibatalkan');
     }
 
     ///////////////////////////////////////////////////////////////////
     //Func tambahan
 
     //men-toggle konfirmasi tiket
-    public function toggleConfirm($id){
-        $ticket = Ticket::with('event')->find($id);
+    public function toggle_confirm($id){
+        $ticket = Ticket::find($id);
+        $event_id = $ticket->event_id;
         if($ticket->confirmed)
             $ticket->confirmed = 0;
         else {
-            //memeriksa jumlah tiket tersedia
-            $total = Ticket::where('event_id', $ticket->event_id)
-                                ->where('confirmed', 1)
-                                ->get();
-            if(count($total) + 1 <= $ticket->event->max_ticket){
-                $ticket->confirmed = 1;
-                $code = "";
-                //membuat kode pada tiket
-                while(true){
-                    $valid = false;
-                    $code = strtoupper(substr(md5(mt_rand(1, 200)), 0, 5));
-                    foreach($total as $i){
-                        if(strcmp($code, $i->code) == 0){
-                            $ticket->update(['code' => $code]);
-                            $valid = true;
-                            break;
-                        }
-                    }
-                    if($valid){
-                        break;
-                    }
-                }
-            } else {
-                return "Udah penuh bor";
-            }
+            $ticket->confirmed = 1;
         }
         $ticket->update();
-        return $ticket;
+        return redirect()->back()->with('success', 'Konfirmasi tiket berhasil dirubah');
     }
 
     //membuat qrcode dari ticket
