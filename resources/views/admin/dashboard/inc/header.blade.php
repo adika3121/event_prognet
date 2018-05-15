@@ -6,6 +6,7 @@
             <a class="navbar-brand" href="/">
                 <!-- Logo icon -->
                 <!-- Logo icon -->
+                
                 <b><span style="color: #fff" class="fa fa-calendar"></span></b>
                 <!--End Logo icon -->
                 <!-- Logo text -->
@@ -38,7 +39,7 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right animated fadeIn">
                         <ul class="dropdown-user">
-                            <li><a href="/profile"><i class="ti-user"></i> Profile</a></li>
+                            <li><a href="/admin/change_password"><i class="ti-key"></i> Ganti Password</a></li>
                             <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
                              document.getElementById('logout-form').submit();"><i class="fa fa-power-off"></i> Logout</a></li>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

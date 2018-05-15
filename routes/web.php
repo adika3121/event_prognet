@@ -46,4 +46,6 @@ Route::get('/admin', 'Admin\LoginController@showLoginForm')->name('admin.login')
 Route::post('/admin', 'Admin\LoginController@login');
 Route::get('/admin/events', 'AdminController@events');
 Route::delete('/admin/events/{id}', 'AdminController@events_destroy');
+Route::get('/admin/change_password', 'AdminController@passwordForm');
+Route::post('/admin/change_password', 'AdminController@changePassword');
 

@@ -24,7 +24,7 @@
         <div class="container-fluid">
             <!-- Start Page Content -->
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div class="card bg-primary p-20">
                         <div class="media widget-ten">
                             <div class="media-left meida media-middle">
@@ -33,6 +33,32 @@
                             <div class="media-body media-text-right">
                                 <h2 class="color-white">{{$events}}</h2>
                                 <p class="m-b-0">Total Event</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card bg-danger p-20">
+                        <div class="media widget-ten">
+                            <div class="media-left meida media-middle">
+                                <span><i class="ti-ticket f-s-40"></i></span>
+                            </div>
+                            <div class="media-body media-text-right">
+                                <h2 class="color-white">{{$tickets}}</h2>
+                                <p class="m-b-0">Total Pesanan Tiket</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card bg-warning p-20">
+                        <div class="media widget-ten">
+                            <div class="media-left meida media-middle">
+                                <span><i class="ti-user f-s-40"></i></span>
+                            </div>
+                            <div class="media-body media-text-right">
+                                <h2 class="color-white">{{$users}}</h2>
+                                <p class="m-b-0">Jumlah User</p>
                             </div>
                         </div>
                     </div>

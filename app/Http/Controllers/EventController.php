@@ -131,6 +131,15 @@ class EventController extends Controller
         $row->image = $filename;
         $row->save();
 
+        $tickets = Ticket::where('event_id', $row->id)->get();
+        foreach($tickets as $ticket){
+            Notif::create([
+                'user_id' => $ticket->user_id,
+                'type' => 4,
+                'content' => 'Event <b>'.$event->name.'</b> mendapat pembaharuan'
+            ]);
+        }
+
         return redirect('/events')->with('success', 'Event berhasil diupdate');
     }
 

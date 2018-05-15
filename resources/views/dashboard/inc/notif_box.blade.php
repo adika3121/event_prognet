@@ -41,6 +41,17 @@
                                 <span class="time">{{ $notif->created_at->format('l, d M Y h:i A') }}</span>
                             </div>
                         </a>
+                    @elseif($notif->type == 4)
+                        {{-- Event dibatalkan --}}
+                        <a href="#">
+                            <div class="mail-contnet">
+                                <h5>Event Update</h5>
+                                <span style="font-size: 11px">
+                                    {!! $notif->content !!}
+                                </span>
+                                <span class="time">{{ $notif->created_at->format('l, d M Y h:i A') }}</span>
+                            </div>
+                        </a>
                     @elseif($notif->type == 5)
                         {{-- Event dibatalkan --}}
                         <a href="#">

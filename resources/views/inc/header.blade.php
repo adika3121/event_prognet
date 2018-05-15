@@ -2,9 +2,9 @@
 <header class="nav-holder make-sticky">
   <div id="navbar" role="navigation" class="navbar navbar-expand-lg">
     <div class="container">
-      <a href="index.html" class="navbar-brand home">
-        <img src="{{ asset('page/img/logo.png') }}" alt="Universal logo" class="d-none d-md-inline-block">
-        <img src="{{ asset('page/img/logo-small.png') }}" class="d-inline-block d-md-none">
+      <a href="/" class="navbar-brand home">
+        <img width="146px" src="{{ asset('page/img/logo.png') }}" alt="Universal logo" class="d-none d-md-inline-block">
+        <img width="70px" src="{{ asset('page/img/logo-small.png') }}" class="d-inline-block d-md-none">
       </a>
       <button type="button" data-toggle="collapse" data-target="#navigation" class="navbar-toggler btn-template-outlined"><span class="sr-only">Toggle navigation</span><i class="fa fa-align-justify"></i></button>
       <div id="navigation" class="navbar-collapse collapse">
