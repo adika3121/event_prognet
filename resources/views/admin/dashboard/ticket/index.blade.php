@@ -4,8 +4,8 @@
 
 <!-- Main wrapper  -->
 <div id="main-wrapper">
-  @include('dashboard.inc.header')
-  @include('dashboard.inc.sidebar')
+  @include('admin.dashboard.inc.header')
+  @include('admin.dashboard.inc.sidebar')
   <!-- End Left Sidebar  -->
   <!-- Page wrapper  -->
   <div class="page-wrapper">
@@ -40,7 +40,8 @@
                   <thead>
                       <tr>
                         <th>No</th>
-                        <th>Nama Event</th>
+                        <th>Pemesan</th>
+                        <th>Event</th>
                         <th>Tanggal Memesan</th>
                         <th>Operasi</th>
                       </tr>
@@ -50,19 +51,17 @@
                     @foreach($tickets as $i => $row)
                       <tr>
                           <td>{{ $i + 1 }}</td>
+                          <td>{{ $row->user->name }}</td>
                           <td><a href="/events/{{ $row->id }}" class="text-primary">{{ $row->event->name }}</a></td>
                           <td>{{ $row->created_at }}</td>
                           <td>
                             <div class="btn-group">
-                              <button class="btn btn-info" onclick="kode('{{$row->code}}')">
-                                <span class="fa fa-eye"></span>
-                              </button>
                               <a href="#" class="btn btn-danger" onclick="event.preventDefault();
                                   document.getElementById('destroy').submit();">
                                 <span class="fa fa-trash"></span>
                               </a>
                             </div>
-                            <form id="destroy" action="/tickets/{{ $row->id }}" method="POST" style="display: none;">
+                            <form id="destroy" action="/admin/tickets/{{ $row->id }}" method="POST" style="display: none;">
                                 {{ csrf_field() }}
                                 {{ method_field("DELETE") }}
                             </form>

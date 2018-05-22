@@ -39,18 +39,28 @@
 							<h4><span class="fa fa-ticket"></span> Jumlah Tiket</h4>
 							<p style="font-size: 23px">{{ $event->tickets->count() }}/<b>{{ $event->max_ticket }}</b></p>
 						</div>
-						@if($ordered)
-							<button style="margin: 10px 0" class="btn btn-template-main">
-								<span class="fa fa-check"></span> SUDAH DIPESAN
-								</button>
-						@elseif($event->user_id == Auth::user()->id)
-							@if($event->user->id == Auth::user()->id)
-								<a href="/events/{{$event->id}}/edit" class="btn btn-primary">
-									<span class="fa fa-cog"></span> Edit Event
-								</a>
-								<a href="/events/{{$event->id}}/ticket" class="btn btn-info">
-									<span class="fa fa-ticket"></span> Daftar Tiket
-								</a>
+						@if(!Auth::guest())
+							@if($ordered)
+								<button style="margin: 10px 0" class="btn btn-template-main">
+									<span class="fa fa-check"></span> SUDAH DIPESAN
+									</button>
+							@elseif($event->user_id == Auth::user()->id)
+								@if($event->user->id == Auth::user()->id)
+									<a href="/events/{{$event->id}}/edit" class="btn btn-primary">
+										<span class="fa fa-cog"></span> Edit Event
+									</a>
+									<a href="/events/{{$event->id}}/ticket" class="btn btn-info">
+										<span class="fa fa-ticket"></span> Daftar Tiket
+									</a>
+								@endif
+							@else
+								<form method="POST" action="/tickets">
+									{{ csrf_field() }}
+									<input type="hidden" name="event_id" value="{{$event->id}}">
+									<button type="submit" style="margin: 10px 0" class="btn btn-template-main">
+										<span class="fa fa-tag"></span> PESAN TIKET
+									</button>
+								</form>
 							@endif
 						@else
 							<form method="POST" action="/tickets">

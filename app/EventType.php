@@ -10,7 +10,7 @@ class EventType extends Model
 
     protected $fillable = ['id', 'name'];
 
-    public function tickets(){
-        return $this->hasMany(Ticket::class, 'event_id');
+    public function events(){
+        return $this->hasMany(Event::class, 'event_type_id');
     }
 }

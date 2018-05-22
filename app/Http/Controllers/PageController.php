@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Event;
 use App\EventType;
+use Carbon\Carbon;
 
 class PageController extends Controller
 {
@@ -24,14 +25,33 @@ class PageController extends Controller
     public function filter(Request $req){
         $events = Event::with('tickets');
         //mengecek jenis event
-        if($req->name)
+        if($req->name){
             $name = $req->name;
             $events->where(function($query) use ($name){
                 $query->where('name', 'like', '%'.$name.'%')
                 ->orWhere('description', 'like', '%'.$name.'%');
             });
+        }
         if($req->event_type_id)
             $events->where('event_type_id', $req->event_type_id);
+
+        if($req->when){
+            if($req->when == 1)
+                $events->whereBetween('start_date', [
+                    Carbon::now()->startOfWeek(),
+                    Carbon::now()->endOfWeek()
+                ]);
+            else if($req->when == 2)
+                $events->whereBetween('start_date', [
+                    Carbon::now()->startOfMonth(),
+                    Carbon::now()->endOfMonth()
+                ]);
+            else if($req->when == 3)
+                $events->whereBetween('start_date', [
+                    Carbon::now()->startOfYear(),
+                    Carbon::now()->endOfYear()
+                ]);
+        }
 
         $event_types = EventType::all();
         return view('filter')

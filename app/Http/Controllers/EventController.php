@@ -46,6 +46,9 @@ class EventController extends Controller
                     Event::with('event_type')->find($id)
                 )->with('event_types',
                     EventType::all()
+                )->with('notifs', 
+                    Notif::where('user_id', Auth::user()->id)->where('status', 0)
+                        ->orderBy('created_at', 'desc')->get()
                 );
     }
 

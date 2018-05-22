@@ -45,7 +45,13 @@ Route::get('/admin/home', 'AdminController@index');
 Route::get('/admin', 'Admin\LoginController@showLoginForm')->name('admin.login');
 Route::post('/admin', 'Admin\LoginController@login');
 Route::get('/admin/events', 'AdminController@events');
+Route::get('/admin/tickets', 'AdminController@tickets');
+Route::get('/admin/users', 'AdminController@users');
+Route::get('/admin/event_types', 'AdminController@event_types');
 Route::delete('/admin/events/{id}', 'AdminController@events_destroy');
+Route::delete('/admin/tickets/{id}', 'AdminController@tickets_destroy');
+Route::delete('/admin/users/{id}', 'AdminController@users_destroy');
+Route::delete('/admin/event_types/{id}', 'AdminController@event_types_destroy');
 Route::get('/admin/change_password', 'AdminController@passwordForm');
 Route::post('/admin/change_password', 'AdminController@changePassword');
 
