@@ -3,7 +3,7 @@
 ==================================================================================
 ==================================================================================
 
-Universal Template 
+Universal Template
 
 https://bootstrapious.com/p/universal-business-e-commerce-template
 
@@ -1129,7 +1129,7 @@ header.nav-holder.sticky {
   height: 280px;
   width: 100%;
   background-size: cover;
-  background-position: center; 
+  background-position: center;
   margin-bottom: 15px;
 }
 
@@ -1198,7 +1198,7 @@ header.nav-holder.sticky {
   padding: 5px 10px;
   color: #fff;
   font-size: 12px;
-} 
+}
 
 #blog-listing-big .post, #blog-listing-medium .post {
   margin-bottom: 60px;
@@ -1208,7 +1208,7 @@ header.nav-holder.sticky {
   background-size: cover;
   background-position: center center;
   width: 100%;
-  height: 160px; 
+  height: 160px;
 }
 
 #blog-listing-medium .detail .badge {
@@ -1253,7 +1253,8 @@ header.nav-holder.sticky {
 #blog-listing-big p.intro, #blog-listing-medium p.intro {
   margin-top: 10px;
   color: #777;
-  height: 40px;
+  overflow: hidden;
+  height: 80px;
 }
 
 .pager {
@@ -3078,7 +3079,7 @@ STYLE SWITCHER FOR DEMO
 }
 
 /*
- * 3. TYPE  
+ * 3. TYPE
  */
 body {
   font-family: "Roboto", Helvetica, Arial, sans-serif;
