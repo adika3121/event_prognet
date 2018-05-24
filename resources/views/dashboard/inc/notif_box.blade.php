@@ -1,3 +1,6 @@
+
+<!-- lonceng pmeberitahuan pojok kanan atas -->
+
 <div class="dropdown-menu dropdown-menu-right mailbox animated fadeIn">
     <ul>
         <li>
@@ -68,7 +71,7 @@
             @else
                     <p style="color: #888; text-align: center">Kosong</p>
             @endif
-                
+
                 {{-- <a href="#">
                     <div class="btn btn-success btn-circle m-r-10"><i class="ti-calendar"></i></div>
                     <div class="mail-contnet">

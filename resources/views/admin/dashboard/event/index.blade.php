@@ -61,9 +61,6 @@
                             </td>
                             <td>
                               <div class="btn-group">
-                                  <a href="/events/{{$row->id}}/edit" class="btn btn-info">
-                                    <span class="fa fa-cog"></span>
-                                  </a>
                                   <a href="#" class="btn btn-danger" onclick="event.preventDefault();
                                       document.getElementById('destroy').submit();">
                                     <span class="fa fa-trash"></span>

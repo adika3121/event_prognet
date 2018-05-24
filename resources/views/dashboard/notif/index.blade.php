@@ -2,6 +2,7 @@
 
 @section('body')
 
+<!-- Isis dari menu pemberitahuan di sidebar -->
 <!-- Main wrapper  -->
 <div id="main-wrapper">
   @include('dashboard.inc.header')

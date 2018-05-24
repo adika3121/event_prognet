@@ -2,6 +2,7 @@
 
 @section('body')
 
+<!-- Untuk melihat tiket yang kita pesan (ada di menu sidebar)-->
 <!-- Main wrapper  -->
 <div id="main-wrapper">
   @include('dashboard.inc.header')
@@ -115,7 +116,7 @@
   <script src="{{asset('dashboard/js/lib/datatables/datatables.min.js')}}"></script>
   <script src="{{asset('dashboard/js/lib/datatables/datatables-init.js')}}"></script>
   <script type="text/javascript">
-      
+
     function kode(code){
       swal({
         'title': 'Kode Tiket',
